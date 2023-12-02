@@ -8,16 +8,16 @@ test("hit() function increments the amount of hits taken", () => {
 });
 
 test("ship.sunk stays false when the amount of hits is < ship's length", () => {
-    expect(ship.sunk).toBeFalsy();
+	expect(ship.sunk).toBeFalsy();
 });
 
 test("ship.sunk becomes true when the amount of hits is == ship's length", () => {
 	ship.hit();
-    ship.hit();
-    expect(ship.sunk).toBeTruthy();
+	ship.hit();
+	expect(ship.sunk).toBeTruthy();
 });
 
 test("Can't hit after the ship has sunk", () => {
-    ship.hit();
-    expect(ship.hits).toBe(3);
-})
+	ship.hit();
+	expect(ship.hits).toBe(3);
+});

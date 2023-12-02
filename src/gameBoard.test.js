@@ -104,8 +104,8 @@ test("Can place ships at the edges of the game board", () => {
 });
 
 test("Records the coordinates of the missed shot", () => {
-    gameBoard.receiveAttack([5, 2]);
-    expect(gameBoard.array).toStrictEqual([
+	gameBoard.receiveAttack([5, 2]);
+	expect(gameBoard.array).toStrictEqual([
 		[" ", " ", " ", " ", " ", " ", " ", "D", "D", "D"],
 		[" ", "D", " ", " ", " ", " ", " ", " ", " ", " "],
 		[" ", "D", " ", " ", "B", "B", "B", "B", " ", " "],
@@ -120,11 +120,21 @@ test("Records the coordinates of the missed shot", () => {
 });
 
 test("Registers hit on ship", () => {
-    gameBoard.receiveAttack([2, 1]);
-    expect(destroyer.hits).toBe(1);
+	gameBoard.receiveAttack([2, 1]);
+	expect(destroyer.hits).toBe(1);
 });
 
 test("Can't hit the same coordinates more than once", () => {
-    gameBoard.receiveAttack([2, 1]);
-    expect(destroyer.hits).toBe(1);
+	gameBoard.receiveAttack([2, 1]);
+	expect(destroyer.hits).toBe(1);
+});
+
+test("All ships have been sunk", () => {
+	gameBoard.receiveAttack([1, 1]);
+	gameBoard.receiveAttack([3, 1]);
+	gameBoard.receiveAttack([2, 4]);
+	gameBoard.receiveAttack([2, 5]);
+	gameBoard.receiveAttack([2, 6]);
+	gameBoard.receiveAttack([2, 7]);
+	expect(gameBoard.allShipsSank).toBeTruthy();
 });

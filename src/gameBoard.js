@@ -1,6 +1,7 @@
-import Ship, { shipArray } from "./ship";
+import { shipArray } from "./ship";
 
 const attackArray = [];
+const sunkArray = [];
 
 export default class GameBoard {
 	constructor() {
@@ -62,8 +63,8 @@ export default class GameBoard {
 
 	receiveAttack(coords) {
 		for (let i = 0; i < attackArray.length; i++) {
-            if (attackArray[i][0] === coords[0] && attackArray[i][1] === coords[1]) return;
-        }
+			if (attackArray[i][0] === coords[0] && attackArray[i][1] === coords[1]) return;
+		}
 		attackArray.push(coords);
 		const y = coords[0];
 		const x = coords[1];
@@ -73,10 +74,15 @@ export default class GameBoard {
 				if (shipArray[i].ID === shipID) {
 					shipArray[i].hit();
 				}
+				if (shipArray[i].sunk === true) {
+					sunkArray.push(shipArray[i]);
+				}
 			}
 		} else {
 			this.array[y][x] = "X";
 		}
-		
+		if (sunkArray.length === shipArray.length) {
+			this.allShipsSank = true;
+		}
 	}
 }
