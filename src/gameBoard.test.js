@@ -1,5 +1,5 @@
 import GameBoard from "./gameBoard";
-import Ship, { shipArray } from "./ship";
+import Ship from "./ship";
 
 const gameBoard = new GameBoard();
 const battleship = new Ship(4, "B");
