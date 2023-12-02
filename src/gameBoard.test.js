@@ -1,5 +1,5 @@
 import GameBoard from "./gameBoard";
-import Ship from "./ship";
+import Ship, { shipArray } from "./ship";
 
 const gameBoard = new GameBoard();
 const battleship = new Ship(4, "B");
@@ -54,8 +54,8 @@ test("Can't place ships outside the game board", () => {
 });
 
 test("Can't place ships on top of other ships", () => {
-    gameBoard.placeShip([2, 6], destroyer, "X");
-    expect(gameBoard.array).toStrictEqual([
+	gameBoard.placeShip([2, 6], destroyer, "X");
+	expect(gameBoard.array).toStrictEqual([
 		[" ", " ", " ", " ", " ", " ", " ", " ", " ", " "],
 		[" ", "D", " ", " ", " ", " ", " ", " ", " ", " "],
 		[" ", "D", " ", " ", "B", "B", "B", "B", " ", " "],
@@ -67,12 +67,12 @@ test("Can't place ships on top of other ships", () => {
 		[" ", " ", " ", " ", " ", " ", " ", " ", " ", " "],
 		[" ", " ", " ", " ", " ", " ", " ", " ", " ", " "],
 	]);
-})
+});
 
 test("Can't place ships next to other ships", () => {
-    gameBoard.placeShip([4, 0], battleship, "X");
-    gameBoard.placeShip([3, 8], battleship, "Y");
-    expect(gameBoard.array).toStrictEqual([
+	gameBoard.placeShip([4, 0], battleship, "X");
+	gameBoard.placeShip([3, 8], battleship, "Y");
+	expect(gameBoard.array).toStrictEqual([
 		[" ", " ", " ", " ", " ", " ", " ", " ", " ", " "],
 		[" ", "D", " ", " ", " ", " ", " ", " ", " ", " "],
 		[" ", "D", " ", " ", "B", "B", "B", "B", " ", " "],
@@ -84,12 +84,12 @@ test("Can't place ships next to other ships", () => {
 		[" ", " ", " ", " ", " ", " ", " ", " ", " ", " "],
 		[" ", " ", " ", " ", " ", " ", " ", " ", " ", " "],
 	]);
-})
+});
 
 test("Can place ships at the edges of the game board", () => {
-    gameBoard.placeShip([7, 0], destroyer, "Y");
-    gameBoard.placeShip([0, 7], destroyer, "X");
-    expect(gameBoard.array).toStrictEqual([
+	gameBoard.placeShip([7, 0], destroyer, "Y");
+	gameBoard.placeShip([0, 7], destroyer, "X");
+	expect(gameBoard.array).toStrictEqual([
 		[" ", " ", " ", " ", " ", " ", " ", "D", "D", "D"],
 		[" ", "D", " ", " ", " ", " ", " ", " ", " ", " "],
 		[" ", "D", " ", " ", "B", "B", "B", "B", " ", " "],
@@ -101,4 +101,30 @@ test("Can place ships at the edges of the game board", () => {
 		["D", " ", " ", " ", " ", " ", " ", " ", " ", " "],
 		["D", " ", " ", " ", " ", " ", " ", " ", " ", " "],
 	]);
-})
+});
+
+test("Records the coordinates of the missed shot", () => {
+    gameBoard.receiveAttack([5, 2]);
+    expect(gameBoard.array).toStrictEqual([
+		[" ", " ", " ", " ", " ", " ", " ", "D", "D", "D"],
+		[" ", "D", " ", " ", " ", " ", " ", " ", " ", " "],
+		[" ", "D", " ", " ", "B", "B", "B", "B", " ", " "],
+		[" ", "D", " ", " ", " ", " ", " ", " ", " ", " "],
+		[" ", " ", " ", " ", " ", " ", " ", " ", " ", " "],
+		[" ", " ", "X", " ", " ", " ", " ", " ", " ", " "],
+		[" ", " ", " ", " ", " ", " ", " ", " ", " ", " "],
+		["D", " ", " ", " ", " ", " ", " ", " ", " ", " "],
+		["D", " ", " ", " ", " ", " ", " ", " ", " ", " "],
+		["D", " ", " ", " ", " ", " ", " ", " ", " ", " "],
+	]);
+});
+
+test("Registers hit on ship", () => {
+    gameBoard.receiveAttack([2, 1]);
+    expect(destroyer.hits).toBe(1);
+});
+
+test("Can't hit the same coordinates more than once", () => {
+    gameBoard.receiveAttack([2, 1]);
+    expect(destroyer.hits).toBe(1);
+});
