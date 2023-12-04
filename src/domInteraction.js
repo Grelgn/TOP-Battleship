@@ -1,4 +1,4 @@
-import { User, AI } from "./gameLoop";
+import { User, AI, turn } from "./gameLoop";
 
 function populateUser() {
 	const userBoardIDs = [];
@@ -23,6 +23,18 @@ function populateUser() {
 	}
 }
 
+function enemyAttack(enemy) {
+	const y = enemy[0];
+	const x = enemy[1];
+	const coordsID = `P1Y${y}X${x}`;
+	const coords = document.querySelector(`#${coordsID}`);
+	if (User.gameBoard.array[y][x] !== "X") {
+		coords.classList.add("hit");
+	} else {
+		coords.classList.add("miss");
+	}
+}
+
 function clickEnemy() {
 	const aiBoardY = document.querySelectorAll(".enemy-board > div");
 	aiBoardY.forEach((Y) => {
@@ -31,14 +43,13 @@ function clickEnemy() {
 			X.addEventListener("click", () => {
 				const y = X.id.slice(3, 4);
 				const x = X.id.slice(5);
-				console.log(X.id);
-				console.log(y);
-				console.log(x);
-				if (AI.gameBoard.array[y][x] !== " ") {
+				const enemy = turn(y, x);
+				if (AI.gameBoard.array[y][x] !== "X") {
 					X.classList.add("hit");
 				} else {
-                    X.classList.add("miss");
+					X.classList.add("miss");
 				}
+				enemyAttack(enemy);
 			});
 		});
 	});

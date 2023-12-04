@@ -28,10 +28,10 @@ AI.gameBoard.placeShip([3, 0], AI.destroyer, "X");
 AI.gameBoard.placeShip([6, 2], AI.submarine, "X");
 AI.gameBoard.placeShip([0, 1], AI.patrolBoat, "Y");
 
-// while (User.allShipsSank === false && AI.allShipsSank === false) {
-// 	User.attack();
-// 	AI.gameBoard.receiveAttack(User.attackArray[User.attackArray.length - 1]);
-
-// 	AI.attack();
-// 	User.gameBoard.receiveAttack(AI.attackArray[AI.attackArray.length - 1]);
-// }
+export function turn(y, x) {
+	AI.gameBoard.receiveAttack([y, x]);
+	AI.attack();
+	const enemyAttack = AI.attackArray[AI.attackArray.length - 1];
+	User.gameBoard.receiveAttack(enemyAttack);
+	return enemyAttack;
+}
