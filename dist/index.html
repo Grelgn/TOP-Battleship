@@ -7,5 +7,261 @@
 		<link rel="stylesheet" href="style.css" />
 		<script src="main.js" defer></script>
 	</head>
-	<body></body>
+	<body>
+		<header>
+			<div>BATTLESHIP</div>
+		</header>
+		<div class="game">
+			<div class="you">
+				<div>YOU</div>
+				<div class="your-board">
+					<div id="P1Y0">
+						<div id="P1Y0X0"></div>
+						<div id="P1Y0X1"></div>
+						<div id="P1Y0X2"></div>
+						<div id="P1Y0X3"></div>
+						<div id="P1Y0X4"></div>
+						<div id="P1Y0X5"></div>
+						<div id="P1Y0X6"></div>
+						<div id="P1Y0X7"></div>
+						<div id="P1Y0X8"></div>
+						<div id="P1Y0X9"></div>
+					</div>
+					<div id="P1Y1">
+						<div id="P1Y1X0"></div>
+						<div id="P1Y1X1"></div>
+						<div id="P1Y1X2"></div>
+						<div id="P1Y1X3"></div>
+						<div id="P1Y1X4"></div>
+						<div id="P1Y1X5"></div>
+						<div id="P1Y1X6"></div>
+						<div id="P1Y1X7"></div>
+						<div id="P1Y1X8"></div>
+						<div id="P1Y1X9"></div>
+					</div>
+					<div id="P1Y2">
+						<div id="P1Y2X0"></div>
+						<div id="P1Y2X1"></div>
+						<div id="P1Y2X2"></div>
+						<div id="P1Y2X3"></div>
+						<div id="P1Y2X4"></div>
+						<div id="P1Y2X5"></div>
+						<div id="P1Y2X6"></div>
+						<div id="P1Y2X7"></div>
+						<div id="P1Y2X8"></div>
+						<div id="P1Y2X9"></div>
+					</div>
+					<div id="P1Y3">
+						<div id="P1Y3X0"></div>
+						<div id="P1Y3X1"></div>
+						<div id="P1Y3X2"></div>
+						<div id="P1Y3X3"></div>
+						<div id="P1Y3X4"></div>
+						<div id="P1Y3X5"></div>
+						<div id="P1Y3X6"></div>
+						<div id="P1Y3X7"></div>
+						<div id="P1Y3X8"></div>
+						<div id="P1Y3X9"></div>
+					</div>
+					<div id="P1Y4">
+						<div id="P1Y4X0"></div>
+						<div id="P1Y4X1"></div>
+						<div id="P1Y4X2"></div>
+						<div id="P1Y4X3"></div>
+						<div id="P1Y4X4"></div>
+						<div id="P1Y4X5"></div>
+						<div id="P1Y4X6"></div>
+						<div id="P1Y4X7"></div>
+						<div id="P1Y4X8"></div>
+						<div id="P1Y4X9"></div>
+					</div>
+					<div id="P1Y5">
+						<div id="P1Y5X0"></div>
+						<div id="P1Y5X1"></div>
+						<div id="P1Y5X2"></div>
+						<div id="P1Y5X3"></div>
+						<div id="P1Y5X4"></div>
+						<div id="P1Y5X5"></div>
+						<div id="P1Y5X6"></div>
+						<div id="P1Y5X7"></div>
+						<div id="P1Y5X8"></div>
+						<div id="P1Y5X9"></div>
+					</div>
+					<div id="P1Y6">
+						<div id="P1Y6X0"></div>
+						<div id="P1Y6X1"></div>
+						<div id="P1Y6X2"></div>
+						<div id="P1Y6X3"></div>
+						<div id="P1Y6X4"></div>
+						<div id="P1Y6X5"></div>
+						<div id="P1Y6X6"></div>
+						<div id="P1Y6X7"></div>
+						<div id="P1Y6X8"></div>
+						<div id="P1Y6X9"></div>
+					</div>
+					<div id="P1Y7">
+						<div id="P1Y7X0"></div>
+						<div id="P1Y7X1"></div>
+						<div id="P1Y7X2"></div>
+						<div id="P1Y7X3"></div>
+						<div id="P1Y7X4"></div>
+						<div id="P1Y7X5"></div>
+						<div id="P1Y7X6"></div>
+						<div id="P1Y7X7"></div>
+						<div id="P1Y7X8"></div>
+						<div id="P1Y7X9"></div>
+					</div>
+					<div id="P1Y8">
+						<div id="P1Y8X0"></div>
+						<div id="P1Y8X1"></div>
+						<div id="P1Y8X2"></div>
+						<div id="P1Y8X3"></div>
+						<div id="P1Y8X4"></div>
+						<div id="P1Y8X5"></div>
+						<div id="P1Y8X6"></div>
+						<div id="P1Y8X7"></div>
+						<div id="P1Y8X8"></div>
+						<div id="P1Y8X9"></div>
+					</div>
+					<div id="P1Y9">
+						<div id="P1Y9X0"></div>
+						<div id="P1Y9X1"></div>
+						<div id="P1Y9X2"></div>
+						<div id="P1Y9X3"></div>
+						<div id="P1Y9X4"></div>
+						<div id="P1Y9X5"></div>
+						<div id="P1Y9X6"></div>
+						<div id="P1Y9X7"></div>
+						<div id="P1Y9X8"></div>
+						<div id="P1Y9X9"></div>
+					</div>
+				</div>
+			</div>
+			<div class="enemy">
+				<div>ENEMY</div>
+				<div class="enemy-board">
+					<div id="P2Y0">
+						<div id="P2Y0X0"></div>
+						<div id="P2Y0X1"></div>
+						<div id="P2Y0X2"></div>
+						<div id="P2Y0X3"></div>
+						<div id="P2Y0X4"></div>
+						<div id="P2Y0X5"></div>
+						<div id="P2Y0X6"></div>
+						<div id="P2Y0X7"></div>
+						<div id="P2Y0X8"></div>
+						<div id="P2Y0X9"></div>
+					</div>
+					<div id="P2Y1">
+						<div id="P2Y1X0"></div>
+						<div id="P2Y1X1"></div>
+						<div id="P2Y1X2"></div>
+						<div id="P2Y1X3"></div>
+						<div id="P2Y1X4"></div>
+						<div id="P2Y1X5"></div>
+						<div id="P2Y1X6"></div>
+						<div id="P2Y1X7"></div>
+						<div id="P2Y1X8"></div>
+						<div id="P2Y1X9"></div>
+					</div>
+					<div id="P2Y2">
+						<div id="P2Y2X0"></div>
+						<div id="P2Y2X1"></div>
+						<div id="P2Y2X2"></div>
+						<div id="P2Y2X3"></div>
+						<div id="P2Y2X4"></div>
+						<div id="P2Y2X5"></div>
+						<div id="P2Y2X6"></div>
+						<div id="P2Y2X7"></div>
+						<div id="P2Y2X8"></div>
+						<div id="P2Y2X9"></div>
+					</div>
+					<div id="P2Y3">
+						<div id="P2Y3X0"></div>
+						<div id="P2Y3X1"></div>
+						<div id="P2Y3X2"></div>
+						<div id="P2Y3X3"></div>
+						<div id="P2Y3X4"></div>
+						<div id="P2Y3X5"></div>
+						<div id="P2Y3X6"></div>
+						<div id="P2Y3X7"></div>
+						<div id="P2Y3X8"></div>
+						<div id="P2Y3X9"></div>
+					</div>
+					<div id="P2Y4">
+						<div id="P2Y4X0"></div>
+						<div id="P2Y4X1"></div>
+						<div id="P2Y4X2"></div>
+						<div id="P2Y4X3"></div>
+						<div id="P2Y4X4"></div>
+						<div id="P2Y4X5"></div>
+						<div id="P2Y4X6"></div>
+						<div id="P2Y4X7"></div>
+						<div id="P2Y4X8"></div>
+						<div id="P2Y4X9"></div>
+					</div>
+					<div id="P2Y5">
+						<div id="P2Y5X0"></div>
+						<div id="P2Y5X1"></div>
+						<div id="P2Y5X2"></div>
+						<div id="P2Y5X3"></div>
+						<div id="P2Y5X4"></div>
+						<div id="P2Y5X5"></div>
+						<div id="P2Y5X6"></div>
+						<div id="P2Y5X7"></div>
+						<div id="P2Y5X8"></div>
+						<div id="P2Y5X9"></div>
+					</div>
+					<div id="P2Y6">
+						<div id="P2Y6X0"></div>
+						<div id="P2Y6X1"></div>
+						<div id="P2Y6X2"></div>
+						<div id="P2Y6X3"></div>
+						<div id="P2Y6X4"></div>
+						<div id="P2Y6X5"></div>
+						<div id="P2Y6X6"></div>
+						<div id="P2Y6X7"></div>
+						<div id="P2Y6X8"></div>
+						<div id="P2Y6X9"></div>
+					</div>
+					<div id="P2Y7">
+						<div id="P2Y7X0"></div>
+						<div id="P2Y7X1"></div>
+						<div id="P2Y7X2"></div>
+						<div id="P2Y7X3"></div>
+						<div id="P2Y7X4"></div>
+						<div id="P2Y7X5"></div>
+						<div id="P2Y7X6"></div>
+						<div id="P2Y7X7"></div>
+						<div id="P2Y7X8"></div>
+						<div id="P2Y7X9"></div>
+					</div>
+					<div id="P2Y8">
+						<div id="P2Y8X0"></div>
+						<div id="P2Y8X1"></div>
+						<div id="P2Y8X2"></div>
+						<div id="P2Y8X3"></div>
+						<div id="P2Y8X4"></div>
+						<div id="P2Y8X5"></div>
+						<div id="P2Y8X6"></div>
+						<div id="P2Y8X7"></div>
+						<div id="P2Y8X8"></div>
+						<div id="P2Y8X9"></div>
+					</div>
+					<div id="P2Y9">
+						<div id="P2Y9X0"></div>
+						<div id="P2Y9X1"></div>
+						<div id="P2Y9X2"></div>
+						<div id="P2Y9X3"></div>
+						<div id="P2Y9X4"></div>
+						<div id="P2Y9X5"></div>
+						<div id="P2Y9X6"></div>
+						<div id="P2Y9X7"></div>
+						<div id="P2Y9X8"></div>
+						<div id="P2Y9X9"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
 </html>
