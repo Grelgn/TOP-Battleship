@@ -1,4 +1,4 @@
-import { User, AI, turn } from "./gameLoop";
+import { User, AI, turn, checkSunkStatus } from "./gameLoop";
 
 function populateUser() {
 	const userBoardIDs = [];
@@ -35,6 +35,8 @@ function enemyAttack(enemy) {
 	}
 }
 
+const clickArray = [];
+
 function clickEnemy() {
 	const aiBoardY = document.querySelectorAll(".enemy-board > div");
 	aiBoardY.forEach((Y) => {
@@ -43,6 +45,10 @@ function clickEnemy() {
 			X.addEventListener("click", () => {
 				const y = X.id.slice(3, 4);
 				const x = X.id.slice(5);
+				for (let i = 0; i < clickArray.length; i++) {
+					if (clickArray[i][0] === y && clickArray[i][1] === x) return;
+				}
+				clickArray.push([y, x]);
 				const enemy = turn(y, x);
 				if (AI.gameBoard.array[y][x] !== "X") {
 					X.classList.add("hit");
@@ -50,6 +56,7 @@ function clickEnemy() {
 					X.classList.add("miss");
 				}
 				enemyAttack(enemy);
+				checkSunkStatus();
 			});
 		});
 	});

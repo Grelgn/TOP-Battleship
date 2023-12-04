@@ -1,5 +1,3 @@
-import { shipArray } from "./ship";
-
 export default class GameBoard {
 	constructor() {
 		this.array = [
@@ -14,9 +12,10 @@ export default class GameBoard {
 			[" ", " ", " ", " ", " ", " ", " ", " ", " ", " "],
 			[" ", " ", " ", " ", " ", " ", " ", " ", " ", " "],
 		];
-        this.attackArray = [];
-        this.sunkArray = [];
-        this.allShipsSank = false;
+		this.shipArray = [];
+		this.attackArray = [];
+		this.sunkArray = [];
+		this.allShipsSank = false;
 	}
 
 	placeShip(coords, ship, axis) {
@@ -70,19 +69,24 @@ export default class GameBoard {
 		const x = coords[1];
 		if (this.array[y][x] !== " ") {
 			const shipID = this.array[y][x];
-			for (let i = 0; i < shipArray.length; i++) {
-				if (shipArray[i].ID === shipID) {
-					shipArray[i].hit();
+			// for (let i = 0; i < this.shipArray.length; i++) {
+			// For some reason using the for loop above instead of forEach caused an extremely weird bug
+			this.shipArray.forEach((element) => {
+				if (element.ID === shipID) {
+					element.hit();
 				}
-				if (shipArray[i].sunk === true) {
-					this.sunkArray.push(shipArray[i]);
+				if (element.sunk === true) {
+					for (let j = 0; j < this.sunkArray.length; j++) {
+						if (this.sunkArray[j] === element) return;
+					}
+					this.sunkArray.push(element);
+					if (this.sunkArray.length === this.shipArray.length) {
+						this.allShipsSank = true;
+					}
 				}
-			}
+			});
 		} else {
 			this.array[y][x] = "X";
-		}
-		if (this.sunkArray.length === shipArray.length) {
-			this.allShipsSank = true;
 		}
 	}
 }

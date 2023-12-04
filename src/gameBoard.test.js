@@ -4,6 +4,8 @@ import Ship from "./ship";
 const gameBoard = new GameBoard();
 const battleship = new Ship(4, "B");
 const destroyer = new Ship(3, "D");
+gameBoard.shipArray.push(battleship);
+gameBoard.shipArray.push(destroyer);
 
 test("Can place ships on the X axis", () => {
 	gameBoard.placeShip([2, 4], battleship, "X");

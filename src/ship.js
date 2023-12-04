@@ -1,12 +1,9 @@
-export const shipArray = [];
-
 export default class Ship {
 	constructor(length, ID) {
 		this.ID = ID;
 		this.length = length;
 		this.hits = 0;
 		this.sunk = false;
-		shipArray.push(this);
 	}
 
 	hit() {
