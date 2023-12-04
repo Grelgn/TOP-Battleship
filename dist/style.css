@@ -54,3 +54,15 @@ header {
 .ship {
 	background-color: #083344;
 }
+
+.enemy-board {
+	cursor: pointer;
+}
+
+.hit {
+	background-color: #b91c1c;
+}
+
+.miss {
+	background-color: #67e8f9;
+}
