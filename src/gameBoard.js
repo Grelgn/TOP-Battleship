@@ -1,8 +1,5 @@
 import { shipArray } from "./ship";
 
-const attackArray = [];
-const sunkArray = [];
-
 export default class GameBoard {
 	constructor() {
 		this.array = [
@@ -17,6 +14,9 @@ export default class GameBoard {
 			[" ", " ", " ", " ", " ", " ", " ", " ", " ", " "],
 			[" ", " ", " ", " ", " ", " ", " ", " ", " ", " "],
 		];
+        this.attackArray = [];
+        this.sunkArray = [];
+        this.allShipsSank = false;
 	}
 
 	placeShip(coords, ship, axis) {
@@ -62,10 +62,10 @@ export default class GameBoard {
 	}
 
 	receiveAttack(coords) {
-		for (let i = 0; i < attackArray.length; i++) {
-			if (attackArray[i][0] === coords[0] && attackArray[i][1] === coords[1]) return;
+		for (let i = 0; i < this.attackArray.length; i++) {
+			if (this.attackArray[i][0] === coords[0] && this.attackArray[i][1] === coords[1]) return;
 		}
-		attackArray.push(coords);
+		this.attackArray.push(coords);
 		const y = coords[0];
 		const x = coords[1];
 		if (this.array[y][x] !== " ") {
@@ -75,13 +75,13 @@ export default class GameBoard {
 					shipArray[i].hit();
 				}
 				if (shipArray[i].sunk === true) {
-					sunkArray.push(shipArray[i]);
+					this.sunkArray.push(shipArray[i]);
 				}
 			}
 		} else {
 			this.array[y][x] = "X";
 		}
-		if (sunkArray.length === shipArray.length) {
+		if (this.sunkArray.length === shipArray.length) {
 			this.allShipsSank = true;
 		}
 	}
