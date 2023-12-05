@@ -63,15 +63,22 @@ function clickEnemy() {
 }
 
 function setupShips() {
+	const rotate = document.querySelector(".rotate");
+
 	const ships = document.querySelectorAll(".ships");
+	ships[0].style.display = "grid";
+	let setupShip = 0;
 	let grabIndex = 0;
+	let axis = "X";
 	const dragArray = [];
-	ships.forEach(ship => {
+
+	ships.forEach((ship) => {
 		ship.addEventListener("dragstart", (e) => {
-			grabIndex = Math.floor(e.offsetX / 52.5);
+			if (axis === "X") grabIndex = Math.floor(e.offsetX / 52.5);
+			else if (axis === "Y") grabIndex = Math.floor(e.offsetY / 52.5);
 			if (grabIndex < 0) grabIndex = 0;
 			dragArray.push(ship);
-		})
+		});
 	});
 
 	const userBoardY = document.querySelectorAll(".your-board > div");
@@ -80,20 +87,42 @@ function setupShips() {
 		userBoardX.forEach((X) => {
 			X.addEventListener("dragover", (e) => {
 				e.preventDefault();
-			})
+			});
 			X.addEventListener("drop", () => {
-				const y = Number(X.id.slice(3, 4));
+				let y = Number(X.id.slice(3, 4));
 				let x = Number(X.id.slice(5));
-				x -= grabIndex;
+				if (axis === "X") x -= grabIndex;
+				else if (axis === "Y") y -= grabIndex;
+
 				const shipID = dragArray[dragArray.length - 1].classList[1];
-				User.gameBoard.shipArray.forEach(ship => {
+				User.gameBoard.shipArray.forEach((ship) => {
 					if (ship.ID === shipID) {
-						User.gameBoard.placeShip([y, x], ship, "X");
+						let placement = 0;
+						if (axis === "X") placement = User.gameBoard.placeShip([y, x], ship, "X");
+						else if (axis === "Y") placement = User.gameBoard.placeShip([y, x], ship, "Y");
+						if (placement === true) {
+							ships[setupShip].style.display = "none";
+							if (setupShip < 4) ships[++setupShip].style.display = "grid";
+							else {
+								document.querySelector(".setup").setAttribute("hidden", true);
+								document.querySelector(".enemy").removeAttribute("hidden");
+							}
+						}
 						populateUser();
 					}
-				})
-			})
+				});
+			});
 		});
+	});
+
+	rotate.addEventListener("click", () => {
+		ships.forEach((ship) => {
+			if (ship.classList[2] === "axis-x") {
+				ship.classList.replace("axis-x", "axis-y");
+			} else ship.classList.replace("axis-y", "axis-x");
+		});
+		if (axis === "X") axis = "Y";
+		else axis = "X";
 	});
 }
 

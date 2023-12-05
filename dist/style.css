@@ -59,8 +59,7 @@ header {
 }
 
 .ships {
-	display: grid;
-	grid-auto-flow: column;
+	display: none;
 	justify-content: start;
 }
 
@@ -85,4 +84,12 @@ header {
 
 .miss {
 	background-color: #67e8f9;
+}
+
+.axis-x {
+	grid-auto-flow: column;
+}
+
+.axis-y {
+	grid-auto-flow: row;
 }

@@ -37,6 +37,7 @@ export default class GameBoard {
 				this.array[i][x] = ship.ID;
 			}
 		}
+		return true;
 	}
 
 	checkPlacement(y, x) {

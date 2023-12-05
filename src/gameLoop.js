@@ -16,12 +16,6 @@ AI.gameBoard.shipArray.push(new Ship(3, "D"));
 AI.gameBoard.shipArray.push(new Ship(3, "S"));
 AI.gameBoard.shipArray.push(new Ship(2, "P"));
 
-User.gameBoard.placeShip([6, 5], User.gameBoard.shipArray[0], "X");
-User.gameBoard.placeShip([1, 3], User.gameBoard.shipArray[1], "Y");
-User.gameBoard.placeShip([7, 2], User.gameBoard.shipArray[2], "Y");
-User.gameBoard.placeShip([2, 5], User.gameBoard.shipArray[3], "X");
-User.gameBoard.placeShip([0, 1], User.gameBoard.shipArray[4], "Y");
-
 AI.gameBoard.placeShip([0, 6], AI.gameBoard.shipArray[0], "Y");
 AI.gameBoard.placeShip([6, 8], AI.gameBoard.shipArray[1], "Y");
 AI.gameBoard.placeShip([3, 0], AI.gameBoard.shipArray[2], "X");
