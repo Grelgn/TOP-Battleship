@@ -16,11 +16,17 @@ AI.gameBoard.shipArray.push(new Ship(3, "D"));
 AI.gameBoard.shipArray.push(new Ship(3, "S"));
 AI.gameBoard.shipArray.push(new Ship(2, "P"));
 
-AI.gameBoard.placeShip([0, 6], AI.gameBoard.shipArray[0], "Y");
-AI.gameBoard.placeShip([6, 8], AI.gameBoard.shipArray[1], "Y");
-AI.gameBoard.placeShip([3, 0], AI.gameBoard.shipArray[2], "X");
-AI.gameBoard.placeShip([6, 2], AI.gameBoard.shipArray[3], "X");
-AI.gameBoard.placeShip([0, 1], AI.gameBoard.shipArray[4], "Y");
+let enemyPlaced = 0;
+while (enemyPlaced < 5) {
+	const randomY = Math.floor(Math.random() * 10);
+	const randomX = Math.floor(Math.random() * 10);
+	let randomAxis = Math.floor(Math.random() * 2);
+	if (randomAxis < 1) randomAxis = "X";
+	else randomAxis = "Y";
+	if (AI.gameBoard.placeShip([randomY, randomX], AI.gameBoard.shipArray[enemyPlaced], randomAxis) === true) {
+		enemyPlaced++;
+	}
+}
 
 export function turn(y, x) {
 	AI.gameBoard.receiveAttack([y, x]);

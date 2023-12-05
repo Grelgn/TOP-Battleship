@@ -104,7 +104,7 @@ function setupShips() {
 							ships[setupShip].style.display = "none";
 							if (setupShip < 4) ships[++setupShip].style.display = "grid";
 							else {
-								document.querySelector(".setup").setAttribute("hidden", true);
+								document.querySelector(".setup").style.display = "none";
 								document.querySelector(".enemy").removeAttribute("hidden");
 							}
 						}

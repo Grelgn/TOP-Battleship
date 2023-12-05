@@ -34,6 +34,15 @@ header {
 	background-color: beige;
 }
 
+.setup {
+	display: grid;
+	grid-template-rows: 1fr 1fr 10fr;
+	align-items: center;
+	justify-items: center;
+	margin-bottom: 200px;
+	width: 500px;
+}
+
 .your-board,
 .enemy-board {
 	border: 1px solid black;
@@ -68,6 +77,7 @@ header {
 	width: 50px;
 	height: 50px;
 	background-color: #083344;
+	cursor: grab;
 }
 
 .ship {
@@ -92,4 +102,14 @@ header {
 
 .axis-y {
 	grid-auto-flow: row;
+}
+
+.rotate {
+	font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    background-color: #083344;
+    cursor: pointer;
+	width: 80px;
+	height: 30px;
 }
