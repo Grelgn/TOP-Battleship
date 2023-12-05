@@ -62,7 +62,43 @@ function clickEnemy() {
 	});
 }
 
+function setupShips() {
+	const ships = document.querySelectorAll(".ships");
+	let grabIndex = 0;
+	const dragArray = [];
+	ships.forEach(ship => {
+		ship.addEventListener("dragstart", (e) => {
+			grabIndex = Math.floor(e.offsetX / 52.5);
+			if (grabIndex < 0) grabIndex = 0;
+			dragArray.push(ship);
+		})
+	});
+
+	const userBoardY = document.querySelectorAll(".your-board > div");
+	userBoardY.forEach((Y) => {
+		const userBoardX = Y.querySelectorAll("div");
+		userBoardX.forEach((X) => {
+			X.addEventListener("dragover", (e) => {
+				e.preventDefault();
+			})
+			X.addEventListener("drop", () => {
+				const y = Number(X.id.slice(3, 4));
+				let x = Number(X.id.slice(5));
+				x -= grabIndex;
+				const shipID = dragArray[dragArray.length - 1].classList[1];
+				User.gameBoard.shipArray.forEach(ship => {
+					if (ship.ID === shipID) {
+						User.gameBoard.placeShip([y, x], ship, "X");
+						populateUser();
+					}
+				})
+			})
+		});
+	});
+}
+
 export default function domInteraction() {
 	populateUser();
 	clickEnemy();
+	setupShips();
 }
