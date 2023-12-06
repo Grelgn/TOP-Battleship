@@ -3,8 +3,8 @@
 body {
 	margin: 0;
 	height: 100svh;
-	background-color: #ecfeff;
-	color: #083344;
+	background-color: #334155;
+	color: #e2e8f0;
 	font-family: "Oswald", sans-serif;
 	display: grid;
 	grid-template-rows: 1fr 3fr;
@@ -13,7 +13,7 @@ body {
 
 header {
 	font-size: 110px;
-	background-color: white;
+	background-color: #111827;
 	text-align: center;
 	align-self: center;
 }
@@ -28,15 +28,9 @@ header {
 	width: 1100px;
 }
 
-.you,
-.enemy,
-.setup {
-	background-color: beige;
-}
-
 .setup {
 	display: grid;
-	grid-template-rows: 1fr 1fr 10fr;
+	grid-template-rows: 1fr 2fr 10fr;
 	align-items: center;
 	justify-items: center;
 	margin-bottom: 200px;
@@ -46,6 +40,7 @@ header {
 .your-board,
 .enemy-board {
 	border: 1px solid black;
+	background-color: #24394e;
 }
 
 .your-board > div,
@@ -70,18 +65,19 @@ header {
 .ships {
 	display: none;
 	justify-content: start;
+	border: 1px solid black;
 }
 
 .ships > div {
 	border: 1px solid black;
 	width: 50px;
 	height: 50px;
-	background-color: #083344;
+	background-color: #111827;
 	cursor: grab;
 }
 
 .ship {
-	background-color: #083344;
+	background-color: #111827;
 }
 
 .enemy-board {
@@ -89,11 +85,11 @@ header {
 }
 
 .hit {
-	background-color: #b91c1c;
+	background-color: #991b1b;
 }
 
 .miss {
-	background-color: #67e8f9;
+	background-color: #46596d;
 }
 
 .axis-x {
@@ -106,15 +102,22 @@ header {
 
 .rotate {
 	font-weight: bold;
-    border: none;
-    border-radius: 8px;
-    background-color: #083344;
-    cursor: pointer;
-	width: 80px;
-	height: 30px;
+	font-size: 14px;
+	border: none;
+	border-radius: 8px;
+	background-color: #111827;
+	color: #e2e8f0;
+	cursor: pointer;
+	width: 110px;
+	height: 40px;
 }
 
 dialog {
 	height: 170px;
 	width: 500px;
+	background-color: #e2e8f0;
+}
+
+.text {
+	font-size: 24px;
 }
