@@ -36,6 +36,8 @@ function enemyAttack(enemy) {
 }
 
 const clickArray = [];
+const dialog = document.querySelector("dialog");
+const result = document.querySelector(".result");
 
 function clickEnemy() {
 	const aiBoardY = document.querySelectorAll(".enemy-board > div");
@@ -56,7 +58,13 @@ function clickEnemy() {
 					X.classList.add("miss");
 				}
 				enemyAttack(enemy);
-				checkSunkStatus();
+				if (checkSunkStatus() === 1) {
+					dialog.showModal();
+					result.textContent = "YOU WON!"
+				} else if (checkSunkStatus() === 2) {
+					dialog.showModal();
+					result.textContent = "YOU LOST!"
+				}
 			});
 		});
 	});

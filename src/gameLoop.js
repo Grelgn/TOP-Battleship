@@ -37,7 +37,6 @@ export function turn(y, x) {
 }
 
 export function checkSunkStatus() {
-	if (User.gameBoard.allShipsSank === true || AI.gameBoard.allShipsSank === true) {
-		console.log("Game Over!");
-	}
+	if (AI.gameBoard.allShipsSank === true) return 1;
+	if (User.gameBoard.allShipsSank === true) return 2;
 }

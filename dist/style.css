@@ -113,3 +113,8 @@ header {
 	width: 80px;
 	height: 30px;
 }
+
+dialog {
+	height: 170px;
+	width: 500px;
+}
